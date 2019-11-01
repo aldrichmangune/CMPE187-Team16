@@ -1,10 +1,59 @@
 public class NextDate {
 
     public static void main(String[] args) {
-        String expected = "11/01/2019";
-        String actual = nextDate(10, 31, 2019);
-        System.out.println("Example:\nInput Date: 10/31/2019\nNext Day: " + actual);
-        System.out.println(checkEqual(actual, expected));
+        equivalentClassTesting();
+    }
+
+    public static void equivalentClassTesting() {
+        // Month: has 31 days, day: 30, year: common
+        String actual = nextDate(3, 30, 2017);
+        String expected = "03/31/2017";
+        System.out.println("Equivalent 1: " + checkEqual(actual, expected));
+
+        // Month: has 31 days, day: 31, year: common
+        actual = nextDate(3, 31, 2017);
+        expected = "04/01/2017";
+        System.out.println("Equivalent 2: " + checkEqual(actual, expected));
+
+        // Month: has 30 days, day: 30, year common
+        actual = nextDate(4, 30, 2017);
+        expected = "05/01/2017";
+        System.out.println("Equivalent 3: " + checkEqual(actual, expected));
+
+        // Month: has 30 days, day: 31, year: common
+        actual = nextDate(4, 31, 2017);
+        expected = "Invalid Date Input.";
+        System.out.println("Equivalent 4: " + checkEqual(actual, expected));
+
+        // Month: has 29 days, day: 28, year: leap-every 4 years
+        actual = nextDate(2, 28, 2016);
+        expected = "02/29/2016";
+        System.out.println("Equivalent 5: " + checkEqual(actual, expected));
+
+        // Month: has 29 days, day: 29, year: leap-every 4 years
+        actual = nextDate(2, 29, 2016);
+        expected = "03/01/2016";
+        System.out.println("Equivalent 6: " + checkEqual(actual, expected));
+
+        // Month: has 28 days, day: 28, year: common
+        actual = nextDate(2, 28, 2017);
+        expected = "03/01/2017";
+        System.out.println("Equivalent 7: " + checkEqual(actual, expected));
+
+        // Month: has 28 days, day: 29, year: common
+        actual = nextDate(2, 29, 2017);
+        expected = "Invalid Date Input.";
+        System.out.println("Equivalent 8: " + checkEqual(actual, expected));
+
+        // Month: has 29 days, day: 29, year: leap-divisible by 4
+        actual = nextDate(2, 29, 2000);
+        expected = "03/01/2000";
+        System.out.println("Equivalent 9: " + checkEqual(actual, expected));
+
+        // Month: has 29 days, day: 30, year: leap-divisible by 4
+        actual = nextDate(2, 30, 2000);
+        expected = "Invalid Date Input.";
+        System.out.println("Equivalent 10: " + checkEqual(actual, expected));
     }
 
     // Return the next date based on input date
