@@ -1,7 +1,10 @@
 public class NextDate {
 
     public static void main(String[] args) {
-        System.out.println("Example:\nInput Date: 10/31/2019\nNext Day: " + nextDate(10, 31, 2019));
+        String expected = "11/01/2019";
+        String actual = nextDate(10, 31, 2019);
+        System.out.println("Example:\nInput Date: 10/31/2019\nNext Day: " + actual);
+        System.out.println(checkEqual(actual, expected));
     }
 
     // Return the next date based on input date
@@ -56,5 +59,9 @@ public class NextDate {
             strDay = "0" + strDay;
         }
         return strMonth + "/" + strDay + "/" + year;
+    }
+
+    public static String checkEqual(String actual, String expected) {
+        return actual.compareTo(expected) == 0 ? "Test Pass" : "Test Failed";
     }
 }
