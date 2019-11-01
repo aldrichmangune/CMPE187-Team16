@@ -7,7 +7,7 @@ public class NextDate {
     public static void randomTesting() {
         String expected = "10/15/1996";
         String actual = nextDate(10, 14, 1996);
-        System.out.println("Random 1 " + checkEqual(expected, actual));
+        System.out.println("Random 1: " + checkEqual(expected, actual));
         expected = "01/01/2000";
         actual = nextDate(12, 31, 1999);
         System.out.println("Random 2: " + checkEqual(expected, actual));
