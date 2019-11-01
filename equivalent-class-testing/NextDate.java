@@ -1,7 +1,8 @@
 public class NextDate {
-
     public static void main(String[] args) {
-        equivalentClassTesting();
+      equivalentClassTesting();
+      boundaryTesting();
+      randomTesting();
     }
 
     public static void equivalentClassTesting() {
@@ -54,6 +55,80 @@ public class NextDate {
         actual = nextDate(2, 30, 2000);
         expected = "Invalid Date Input.";
         System.out.println("Equivalent 10: " + checkEqual(actual, expected));
+    }
+  
+  // Boundary testing
+    public static void boundaryTesting() {
+        // Boundary test
+        // M1
+        System.out.println("M1 test: " + checkEqual(nextDate(6,29,2016), "06/30/2016"));
+        // M2
+        System.out.println("M2 test: " + checkEqual(nextDate(7,31,2016), "08/01/2016"));
+        // M3 has 28 days
+        System.out.println("M3(28 days) test: " + checkEqual(nextDate(2,28,2001), "03/01/2001"));
+        // M3 has 29 days
+        System.out.println("M3(29 days) test: " + checkEqual(nextDate(2,28,2016), "02/29/2016"));
+        // M3 invalid date
+        System.out.println("M3(invalid date) test: " + checkEqual(nextDate(2,30,2005), "Invalid Date Input."));
+        // D1 left bound
+        System.out.println("D1(left bound) test: " + checkEqual(nextDate(2,1,2011), "02/02/2011"));
+        // D1 right bound
+        System.out.println("D1(right bound) test: " + checkEqual(nextDate(2,28,2013), "03/01/2013"));
+        // D1 just above left bound
+        System.out.println("D1(jsut above left bound) test: " + checkEqual(nextDate(2,2,2014), "02/03/2014"));
+        // D1 just below right bound
+        System.out.println("D1(just below right bound) test: " + checkEqual(nextDate(2,27,2015), "02/28/2015"));
+        // D1 out of left bound
+        System.out.println("D1(out of left bound) test: " + checkEqual(nextDate(2,0,2002), "Invalid Date Input."));
+        // D1 out of right bound
+        System.out.println("D1(out of right bound) test: " + checkEqual(nextDate(2,29,2013), "Invalid Date Input."));
+        // D2
+        System.out.println("D2 test: " + checkEqual(nextDate(2,29,2012), "03/01/2012"));
+        // D3
+        System.out.println("D3 test: " + checkEqual(nextDate(9,30,2019), "10/01/2019"));
+        // D4
+        System.out.println("D4 test: " + checkEqual(nextDate(1,31,2020), "02/01/2020"));
+        // Y1
+        System.out.println("Y1 test: " + checkEqual(nextDate(02,28,2000), "02/29/2000"));
+        // Y2: Divisible by 400 and 4
+        System.out.println("Y2(divisible by 400 and 4) test: " + checkEqual(nextDate(2,28,2000), "02/29/2000"));
+        // Y2: Divisible by only 4
+        System.out.println("Y2(divisible by only 4) test: " + checkEqual(nextDate(2,28,2012), "02/29/2012"));
+        // Y3
+        System.out.println("Y3 test: " + checkEqual(nextDate(2,28,2021), "03/01/2021"));
+    }
+
+    public static void randomTesting() {
+        String expected = "10/15/1996";
+        String actual = nextDate(10, 14, 1996);
+        System.out.println("Random 1: " + checkEqual(expected, actual));
+        expected = "01/01/2000";
+        actual = nextDate(12, 31, 1999);
+        System.out.println("Random 2: " + checkEqual(expected, actual));
+        expected = "Invalid Date Input.";
+        actual = nextDate(12, 31, 1899);
+        System.out.println("Random 3: " + checkEqual(expected, actual));
+        expected = "05/31/1985";
+        actual = nextDate(5, 30, 1985);
+        System.out.println("Random 4: " + checkEqual(expected, actual));
+        expected = "Invalid Date Input.";
+        actual = nextDate(2, 29, 1965);
+        System.out.println("Random 5: " + checkEqual(expected, actual));
+        expected = "01/01/2100";
+        actual = nextDate(12, 31, 2099);
+        System.out.println("Random 6: " + checkEqual(expected, actual));
+        expected = "09/01/1996";
+        actual = nextDate(8, 31, 1996);
+        System.out.println("Random 7: " + checkEqual(expected, actual));
+        expected = "Invalid Date Input.";
+        actual = nextDate(6, 9, 6969);
+        System.out.println("Random 8: " + checkEqual(expected, actual));
+        expected = "Invalid Date Input.";
+        actual = nextDate(4, 20, 420);
+        System.out.println("Random 9: " + checkEqual(expected, actual));
+        expected = "02/28/2019";
+        actual = nextDate(2, 27, 2019);
+        System.out.println("Random 10: " + checkEqual(expected, actual));
     }
 
     // Return the next date based on input date
