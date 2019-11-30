@@ -1,34 +1,51 @@
 public class CalculateCuboid {
 
     public static void main(String[] args) {
-        // example test case:
-        String actual = calculateCuboid("4", "7", "2");
-        String expected = output(2, 7, 8, 56);
+        // Test cases
+        String actual = calculateCuboid("asd", "5", "6");// Control, Data
+        String expected = errorMsg();
         checkEquality(actual, expected);
 
-        actual = calculateCuboid("4", "-34", "2");
+        actual = calculateCuboid("4", "5", "-123");// Control, Data, Domain
         expected = errorMsg();
         checkEquality(actual, expected);
 
-        // Test cases
-        controlFlowTests();
-        dataFlowTests();
-        domainTests();
+        actual = calculateCuboid("4", "5", "6");// Control, Data
+        expected = output(4, 6, 20, 120);
+        checkEquality(actual, expected);
+
+        actual = calculateCuboid("6", "5", "4");// Control
+        expected = output(4, 6, 20, 120);
+        checkEquality(actual, expected);
+
+        actual = calculateCuboid("5", "4", "6");// Control
+        expected = output(4, 6, 20, 120);
+        checkEquality(actual, expected);
+
+        actual = calculateCuboid("4", "5", "1");// Domain
+        expected = output(1, 5, 4, 20);
+        checkEquality(actual, expected);
+
+        actual = calculateCuboid("0", "5", "6");// Domain
+        expected = errorMsg();
+        checkEquality(actual, expected);
+
+        randomTests();
     }
 
-    // Control flow testing
-    public static void controlFlowTests() {
+    // Random testing
+    public static void randomTests() {
+        String actual = calculateCuboid("4", "50", "8");
+        String expected = output(4, 50, 32, 1600);
+        checkEquality(actual, expected);
 
-    }
+        actual = calculateCuboid("4", "-1", "2");
+        expected = errorMsg();
+        checkEquality(actual, expected);
 
-    // Data flow testing
-    public static void dataFlowTests() {
-
-    }
-
-    // Domain testing
-    public static void domainTests() {
-
+        actual = calculateCuboid("4", "60", "asd");
+        expected = errorMsg();
+        checkEquality(actual, expected);
     }
 
     // receive 3 inputs then compute and print out results for:
