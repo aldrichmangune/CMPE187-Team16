@@ -2,7 +2,7 @@ public class CalculateCuboid {
 
     public static void main(String[] args) {
         // Test cases
-        String actual = calculateCuboid("asd", "5", "6");// Control, Data
+        String actual = calculateCuboid("asd", "5", "6");// Control, Data, Domain
         String expected = errorMsg();
         checkEquality(actual, expected);
 
@@ -30,21 +30,12 @@ public class CalculateCuboid {
         expected = errorMsg();
         checkEquality(actual, expected);
 
-        randomTests();
-    }
-
-    // Random testing
-    public static void randomTests() {
-        String actual = calculateCuboid("4", "50", "8");
-        String expected = output(4, 50, 32, 1600);
+        actual = calculateCuboid("4", "50", "8");// random
+        expected = output(4, 50, 32, 1600);
         checkEquality(actual, expected);
 
-        actual = calculateCuboid("4", "-1", "2");
-        expected = errorMsg();
-        checkEquality(actual, expected);
-
-        actual = calculateCuboid("4", "60", "asd");
-        expected = errorMsg();
+        actual = calculateCuboid("123", "45", "90");// random
+        expected = output(45, 123, 4050, 498150);
         checkEquality(actual, expected);
     }
 
